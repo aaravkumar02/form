@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R&I FORM</title>
+    <!-- Materialize CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        body {
+            background-color: #212969;
+            /* Dark blue background */
+            color: #ffffff;
+            /* White text */
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Additional styles to prevent overlap */
+        .form-section {
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .submit-btn {
+            margin-top: 2rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Custom styles for input fields */
+        .input-field input[type=text],
+        .input-field input[type=email],
+        .input-field input[type=number],
+        .input-field select,
+        .input-field textarea {
+            color: #ffffff;
+            border-bottom: 1px solid #ffffff !important;
+        }
+
+        /* Custom styles for input label */
+        .input-field label {
+            color: #ffffff !important;
+        }
+
+        /* Custom styles for input field focus */
+        .input-field input[type=text]:focus:not([readonly]),
+        .input-field input[type=email]:focus:not([readonly]),
+        .input-field input[type=number]:focus:not([readonly]),
+        .input-field select:focus:not([readonly]),
+        .input-field textarea:focus:not([readonly]) {
+            border-bottom: 1px solid #ffffff !important;
+            box-shadow: 0 1px 0 0 #ffffff !important;
+        }
+
+        /* Custom styles for select dropdown */
+        .input-field .select-wrapper input.select-dropdown {
+            color: #ffffff !important;
+        }
+
+        /* Custom styles for submit button */
+        .submit-btn {
+            background-color: #073a64;
+            /* Blue */
+            border: none;
+            border-radius: 25px;
+            padding: 0px  24px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.9s;
+        }
+
+        .submit-btn:hover {
+            background-color: #0d47a1;
+            /* Darker blue */
+        }
+
+        /* Custom styles for icons */
+        .material-icons {
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2 class="white-text">Research & Innovation Club</h2><br>
+        <h5 class="white-text">Participants Recruitment Form</h5>
+        <form action="/submit-form" method="post">
+            <div class="form-section">
+                <div class="input-field">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input type="text" id="name" name="name" class="validate white-text" required>
+                    <label for="name">Name</label>
+                </div>
+            </div>
+            <div class="form-section">
+                <div class="input-field">
+                    <i class="material-icons prefix">email</i>
+                    <input type="email" id="email" name="email" class="validate white-text" required>
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="form-section">
+                <div class="input-field">
+                    <i class="material-icons prefix">confirmation_number</i>
+                    <input type="text" id="roll_no" name="roll_no" class="validate white-text" required>
+                    <label for="roll_no">University Roll No.</label>
+                </div>
+            </div>
+            <div class="form-section">
+                <div class="input-field">
+                    <i class="material-icons prefix">school</i>
+                    <input type="text" id="section" name="section" class="validate white-text" required>
+                    <label for="section">Section</label>
+                </div>
+            </div>
+            <div class="form-section">
+                <div class="input-field">
+                    <i class="material-icons prefix">lightbulb</i>
+                    <select id="interest" name="interest[]" class="validate white-text" required>
+                        <option value="" disabled selected>Choose or type your interest</option>
+                        <option value="AI">AI</option>
+                        <option value="Cloud computing">Cloud Computing</option>
+                        <option value="Hacking">Hacking</option>
+                        <option value="Quantum computing">Quantum Computing</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <label>Your Interest</label>
+                </div>
+            </div>
+            <div class="form-section" id="other_interest_section" style="display:none;">
+                <div class="input-field">
+                    <i class="material-icons prefix">lightbulb</i>
+                    <input type="text" id="other_interest" name="other_interest" class="validate white-text">
+                    <label for="other_interest">Type your interest here</label>
+                </div>
+            </div>
+            <div class="form-section">
+                <div class="input-field">
+                    <i class="material-icons prefix">question_answer</i>
+                    <textarea id="inspiration" name="inspiration" class="materialize-textarea white-text"></textarea>
+                    <label for="inspiration">What inspired you to join the research and innovation club?</label>
+                </div>
+            </div>
+            <div class="form-section">
+                <div class="input-field">
+                    <i class="material-icons prefix">message</i>
+                    <textarea id="recommendation" name="recommendation"
+                        class="materialize-textarea white-text"></textarea>
+                    <label for="recommendation">Any Recommendations?</label>
+                </div>
+            </div>
+            <div class="form-section">
+                <div class="input-field">
+                    <i class="material-icons prefix">message</i>
+                    <textarea id="expectation" name="expectation" class="materialize-textarea white-text"></textarea>
+                    <label for="expectation">Are there any expectations with the club?</label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light submit-btn" type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, {});
+
+            // Show or hide the 'Other Interest' input field based on user selection
+            var interestDropdown = document.getElementById('interest');
+            var otherInterestSection = document.getElementById('other_interest_section');
+            interestDropdown.addEventListener('change', function () {
+                if (interestDropdown.value === 'Other') {
+                    otherInterestSection.style.display = 'block';
+                } else {
+                    otherInterestSection.style.display = 'none';
+                }
+               
+            });
+        });
+    </script>
+    
+</body>
+
+</html>
